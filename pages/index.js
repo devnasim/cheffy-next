@@ -1,11 +1,10 @@
 import * as React from 'react';
-import { Home } from '../src/components';
+import { BrandGuideLines } from '../src/components';
 
 function HomePage() {
   return (
     <div>
-      Welcome to Next.js!
-      <Home />
+      <BrandGuideLines />
     </div>
   );
 }
