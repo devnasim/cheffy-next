@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Button } from '../../lib';
 
-function Home() {
+function Login() {
   return (
     <div>
       <Button />
@@ -9,4 +9,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Login;
