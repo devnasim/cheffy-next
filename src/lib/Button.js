@@ -1,17 +1,21 @@
 import * as React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { Button as MdButton } from '@material-ui/core';
 
-function Button({ ...props }) {
+function Button({ name, ...props }) {
   return (
     <MdButton variant="contained" color="primary" {...props}>
-      Hello World
+      {name}
     </MdButton>
   );
 }
 
 export default Button;
 
-Button.defaultProps = {};
+Button.defaultProps = {
+  name: 'Hello Universe',
+};
 
-Button.prototype = {};
+Button.prototype = {
+  name: PropTypes.string,
+};

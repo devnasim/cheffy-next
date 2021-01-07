@@ -13,7 +13,7 @@ function Home() {
           Buttons
         </Box>
       </Typography>
-      <Button />
+      <Button name="Primary Button" />
       <Typography component="div">
         <Box fontWeight="fontWeightMedium" component="h2">
           Inputs
