@@ -1,6 +1,9 @@
-import { createStore } from 'redux';
-import rootReducer from './reducers';
+import { configureStore } from '@reduxjs/toolkit';
 
-const store = createStore(rootReducer);
+import postsReducer from './authReducer';
 
-export default store;
+export default configureStore({
+  reducer: {
+    auth: postsReducer,
+  },
+});
