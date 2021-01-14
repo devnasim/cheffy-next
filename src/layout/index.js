@@ -1,11 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import Header from './Header';
 
-const Layout = () => {
+const Layout = ({ children }) => {
   return (
-    <div>
-      <div>hdsjhfvvjfs</div>
-    </div>
+    <>
+      <Header />
+      <div className="container mx-auto">{children}</div>
+    </>
   );
 };
 
 export default Layout;
+Layout.propTypes = {
+  children: PropTypes.node.isRequired,
+};
