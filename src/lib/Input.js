@@ -8,4 +8,4 @@ export default Input;
 
 Input.defaultProps = {};
 
-Input.prototype = {};
+Input.propTypes = {};

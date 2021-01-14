@@ -1,3 +1,4 @@
+/* eslint-disable react/button-has-type */
 import * as React from 'react';
 import PropTypes from 'prop-types';
 
@@ -20,7 +21,7 @@ Button.defaultProps = {
   type: 'button',
 };
 
-Button.prototype = {
+Button.propTypes = {
   name: PropTypes.string,
   type: PropTypes.string,
 };
