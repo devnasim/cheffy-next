@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Layout from '../../src/layout';
-import { Foods } from '../../src/components/Food';
+import { Foods } from '../../src/components/FoodComp';
 
 function FoodPage() {
   return (
