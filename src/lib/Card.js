@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Card = ({ children }) => {
-  return <div className="w-full rounded-sm shadow">{children}</div>;
+  return <div className="w-full rounded-sm shadow-md">{children}</div>;
 };
 
 export default Card;
