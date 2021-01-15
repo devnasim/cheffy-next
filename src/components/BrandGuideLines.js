@@ -1,27 +1,95 @@
-import * as React from 'react';
-import { Container, Typography, Box } from '@material-ui/core';
-import { Button, Input } from '../lib';
+import React, { useState } from 'react';
+import { MdEuroSymbol } from 'react-icons/md';
+import { Radio, Checkbox, ButtonCheckBox, Button, Input } from '../lib';
 
-function Home() {
+const sortOptions = [
+  { key: 'pickup', label: 'Picked for you (default)' },
+  { key: 'most-popular', label: 'Most popular' },
+  { key: 'rating', label: 'Rating' },
+  { key: 'delivery-time', label: 'Delivery time' },
+];
+
+const Filter = () => {
+  const [sort, setSort] = useState('pickup');
+  const [hello, setHello] = useState(true);
+  const [buttonChecked, setButtonChecked] = useState(false);
+  const [price, setPrice] = useState(false);
+
+  const handleSort = (event) => {
+    setSort(event.target.value);
+  };
+
   return (
-    <Container maxWidth="lg">
-      <Typography component="div">
-        <Box fontWeight="fontWeightBold" component="h1">
-          Brand Guidelines and Reusable Components{' '}
-        </Box>
-        <Box fontWeight="fontWeightMedium" component="h2">
-          Buttons
-        </Box>
-      </Typography>
-      <Button name="Primary Button" />
-      <Typography component="div">
-        <Box fontWeight="fontWeightMedium" component="h2">
-          Inputs
-        </Box>
-      </Typography>
-      <Input placeholder="Saad Lam..." />
-    </Container>
+    <div className="m-4">
+      <div className="pb-4">
+        <h2 className="text-2xl font-medium py-2">Button</h2>
+        <div className="flex flex-row flex-wrap">
+          <div className="p-2">
+            <Input placeholder="Saad Lam..." />
+          </div>
+        </div>
+      </div>
+      <div className="pb-4">
+        <h2 className="text-2xl font-medium py-2">Button</h2>
+        <div className="flex flex-row flex-wrap">
+          <div className="p-2">
+            <Button />
+          </div>
+          <div className="p-2">
+            <Button secondary />
+          </div>
+        </div>
+      </div>
+      <div className="pb-4">
+        <h2 className="text-2xl font-medium py-2">Radio</h2>
+        <div className="flex flex-row flex-wrap">
+          {sortOptions.map((item) => (
+            <Radio
+              name="sort"
+              id={item.key}
+              label={item.label}
+              value={sort}
+              onChange={handleSort}
+            />
+          ))}
+        </div>
+      </div>
+      <div className="pb-4">
+        <h2 className="text-2xl font-medium py-2">CheckBox</h2>
+        <div className="flex flex-col">
+          <Checkbox
+            value={hello}
+            onChange={(value) => {
+              setHello(value);
+            }}
+          />
+        </div>
+      </div>
+      <div className="pb-4">
+        <h2 className="text-2xl font-medium py-2">Button Check Box</h2>
+        <div className="flex flex-row justify-start flex-wrap">
+          <div className="p-2">
+            <ButtonCheckBox
+              icon={<MdEuroSymbol />}
+              checked={buttonChecked}
+              onChange={(value) => {
+                setButtonChecked(value);
+              }}
+            />
+          </div>
+          <div className="p-2">
+            <ButtonCheckBox
+              checked={price}
+              name="$"
+              onChange={(value) => {
+                setPrice(value);
+              }}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
   );
-}
+};
 
-export default Home;
+export default Filter;
