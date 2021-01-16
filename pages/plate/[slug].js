@@ -1,13 +1,12 @@
 import React from 'react';
-
 import Layout from '../../src/layout';
-import { Foods } from '../../src/components/FoodComp';
+import { Plate } from '../../src/components/PlateManagement';
 
 function FoodPage() {
   return (
-    <Layout>
+    <Layout hasBanner>
       <div className="py-6">
-        <Foods />
+        <Plate />
       </div>
     </Layout>
   );

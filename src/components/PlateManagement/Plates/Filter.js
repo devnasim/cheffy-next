@@ -16,7 +16,7 @@ const Filter = () => {
 
   const handleSort = (event) => {
     setSort(event.target.value);
-    console.log('sort', event.target.value);
+    // console.log('sort', event.target.value);
   };
 
   return (

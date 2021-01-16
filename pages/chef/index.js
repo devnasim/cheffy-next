@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Banner from '../../src/components/Chef/Banner';
-import FoodCard from '../../src/components/FoodComp/Foods/FoodCard';
+import PlateCard from '../../src/components/PlateManagement/Plates/PlateCard';
 import Layout from '../../src/layout';
 
 function ChefPage() {
@@ -15,12 +15,12 @@ function ChefPage() {
           <div className="text-base">Soup</div>
         </div>
         <div className="grid grid-cols-3 gap-6 py-14">
-          <FoodCard>1</FoodCard>
-          <FoodCard>1</FoodCard>
-          <FoodCard>1</FoodCard>
-          <FoodCard>1</FoodCard>
-          <FoodCard>1</FoodCard>
-          <FoodCard>1</FoodCard>
+          <PlateCard>1</PlateCard>
+          <PlateCard>1</PlateCard>
+          <PlateCard>1</PlateCard>
+          <PlateCard>1</PlateCard>
+          <PlateCard>1</PlateCard>
+          <PlateCard>1</PlateCard>
         </div>
       </div>
     </Layout>

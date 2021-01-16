@@ -1,11 +1,11 @@
 import React, { useCallback, useEffect } from 'react';
-
 import { useDispatch } from 'react-redux';
+
 import Layout from '../src/layout';
 import { platesAction } from '../src/store/plateReducer';
-import { Foods } from '../src/components/FoodComp';
+import { Plates } from '../src/components/PlateManagement';
 
-function FoodsPage() {
+function PlatesPage() {
   const dispatch = useDispatch();
   const fetchPlates = useCallback(async () => {
     await dispatch(platesAction());
@@ -16,13 +16,14 @@ function FoodsPage() {
     fetchPlates();
     return () => controller.abort();
   }, [fetchPlates]);
+
   return (
     <Layout>
       <div className="py-6">
-        <Foods />
+        <Plates />
       </div>
     </Layout>
   );
 }
 
-export default FoodsPage;
+export default PlatesPage;
