@@ -1,21 +1,29 @@
 import React from 'react';
 
+import Banner from '../../src/components/Chef/Banner';
+import FoodCard from '../../src/components/FoodComp/FoodCard';
+import Layout from '../../src/layout';
+
 function ChefPage() {
   return (
-    <div className="h-96">
-      <div className="h-3/5">
-        <h1 className="text-3xl text-primary pt-20 text-center uppercase">
-          Welcome to chef Layout
-        </h1>
-        {/* <div>
-      <pre>{JSON.stringify(nookies, null, 2)}</pre>
-      <button onClick={() => setNookie("foo", "123")}>
-        Set
-      </button>
-      <button onClick={() => removeNookie("foo")}>Clear</button>
-    </div> */}
+    <Layout hasBanner>
+      <Banner />
+      <div className="container mx-auto">
+        <div className="flex flex-row space-x-8 py-8 border-b">
+          <div className="text-base">Picked for you</div>
+          <div className="text-base">Small Plates</div>
+          <div className="text-base">Soup</div>
+        </div>
+        <div className="grid grid-cols-3 gap-6 py-14">
+          <FoodCard>1</FoodCard>
+          <FoodCard>1</FoodCard>
+          <FoodCard>1</FoodCard>
+          <FoodCard>1</FoodCard>
+          <FoodCard>1</FoodCard>
+          <FoodCard>1</FoodCard>
+        </div>
       </div>
-    </div>
+    </Layout>
   );
 }
 
