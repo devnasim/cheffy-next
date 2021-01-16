@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Banner from '../../src/components/Chef/Banner';
-import FoodCard from '../../src/components/FoodComp/FoodCard';
+import FoodCard from '../../src/components/FoodComp/Foods/FoodCard';
 import Layout from '../../src/layout';
 
 function ChefPage() {
