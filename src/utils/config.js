@@ -5,7 +5,8 @@ const dev = {
 };
 
 const prod = {
-  BASE_URL: 'https://server-api-dot-mwarereacttvms.appspot.com/api/v1',
+  // BASE_URL: 'https://server-api-dot-mwarereacttvms.appspot.com/api/v1',
+  BASE_URL: 'https://mycheffy.herokuapp.com',
   MOKE_URL: 'https://salty-badlands-81511.herokuapp.com/api/v1',
   GRAPH_QL_URL: 'https://server-api-dot-mwarereacttvms.appspot.com/graphql',
 };
