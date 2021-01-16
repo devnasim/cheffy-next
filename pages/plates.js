@@ -2,7 +2,7 @@ import React, { useCallback, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import Layout from '../src/layout';
-import { platesAction } from '../src/store/plateReducer';
+import { platesAction } from '../src/store/plateSlice';
 import { Plates } from '../src/components/PlateManagement';
 
 function PlatesPage() {

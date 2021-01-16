@@ -1,11 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import postsReducer from './authReducer';
-import plateReducer from './plateReducer';
+import authSlice from './authSlice';
+import plateSlice from './plateSlice';
 
 export default configureStore({
   reducer: {
-    auth: postsReducer,
-    plateData: plateReducer,
+    auth: authSlice,
+    plateData: plateSlice,
   },
 });

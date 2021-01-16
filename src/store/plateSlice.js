@@ -13,7 +13,7 @@ export const platesAction = createAsyncThunk('/plates', async (params) => {
   return response;
 });
 
-const authSlice = createSlice({
+const plateSlice = createSlice({
   name: 'plates',
   initialState,
   reducers: {
@@ -34,4 +34,4 @@ const authSlice = createSlice({
   },
 });
 
-export default authSlice.reducer;
+export default plateSlice.reducer;

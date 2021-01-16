@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import { useRouter } from 'next/router';
 
-import { loginAction } from '../src/store/authReducer';
+import { loginAction } from '../src/store/authSlice';
 import LoginForm from '../src/components/LoginForm';
 
 function LoginPage() {
