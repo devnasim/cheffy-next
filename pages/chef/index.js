@@ -1,21 +1,14 @@
 import React from 'react';
 
+import Banner from '../../src/components/Chef/Banner';
+import Layout from '../../src/layout';
+
 function ChefPage() {
   return (
-    <div className="h-96">
-      <div className="h-3/5">
-        <h1 className="text-3xl text-primary pt-20 text-center uppercase">
-          Welcome to chef Layout
-        </h1>
-        {/* <div>
-      <pre>{JSON.stringify(nookies, null, 2)}</pre>
-      <button onClick={() => setNookie("foo", "123")}>
-        Set
-      </button>
-      <button onClick={() => removeNookie("foo")}>Clear</button>
-    </div> */}
-      </div>
-    </div>
+    <Layout hasBanner>
+      <Banner />
+      <div className="container mx-auto">s</div>
+    </Layout>
   );
 }
 
