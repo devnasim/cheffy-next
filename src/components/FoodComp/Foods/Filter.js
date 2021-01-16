@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { MdEuroSymbol } from 'react-icons/md';
-import { Radio, Checkbox, ButtonCheckBox } from '../../lib';
+import { Radio, Checkbox, ButtonCheckBox } from '../../../lib';
 
 const sortOptions = [
   { key: 'pickup', label: 'Picked for you (default)' },

@@ -7,7 +7,9 @@ const Layout = ({ children, hasBanner }) => {
   return (
     <>
       <Header />
-      <div className={`${hasBanner ? '' : 'container'} mx-auto`}>{children}</div>
+      <div className={`${hasBanner ? '' : 'container'} mx-6 sm:mx-6 md:mx-6 lg:mx-auto xl:mx-auto`}>
+        {children}
+      </div>
     </>
   );
 };
