@@ -1,26 +1,67 @@
-import React from 'react';
+import React, { useCallback, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { times, dropRight } from 'lodash';
 
-const Item = () => (
-  <div className="flex flex-col justify-center content-center w-24 h-auto">
-    <img
-      className="object-cover rounded-full h-24 w-24"
-      src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
-      alt="food-images"
-    />
-    <div className="py-2">
-      <h2 className="font-medium text-gray-700 text-sm text-center">Asian</h2>
-    </div>
-  </div>
-);
+import { categoriesAction } from '../../../store/plateSlice';
 
-const Categories = () => {
+const LoaderCard = () => <div className="animate-pulse rounded-full h-24 w-24 bg-gray-200" />;
+
+const Items = ({ categories, categoryStatus, categoryError }) => {
+  const loading = categoryStatus === 'loading';
+  const items = dropRight(categories, categories.length - 8);
   return (
-    <div className="pb-2">
-      <div className="grid grid-cols-5 gap-8">
-        <Item />
-      </div>
+    <div className="grid grid-cols-8">
+      {loading && times(8).map(() => <LoaderCard />)}
+      {!loading &&
+        !categoryError &&
+        items.map((category) => (
+          <div
+            className="flex flex-col justify-center content-center w-24 h-auto"
+            key={category.id}
+          >
+            <img
+              className="object-cover rounded-full h-24 w-24"
+              src={category.url}
+              alt={category.name}
+            />
+            <div className="py-2">
+              <h2 className="font-medium text-gray-700 text-sm text-center">{category.name}</h2>
+            </div>
+          </div>
+        ))}
     </div>
   );
+};
+
+const Categories = () => {
+  const { categories, categoryStatus, categoryError } = useSelector((state) => state.plateData);
+  const dispatch = useDispatch();
+  const fetchPlates = useCallback(async () => {
+    await dispatch(categoriesAction({ page: 1, pageSize: 8 }));
+  }, [dispatch]);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    fetchPlates();
+    return () => controller.abort();
+  }, [fetchPlates]);
+
+  return (
+    <div className="pb-2">
+      <Items
+        categories={categories}
+        categoryStatus={categoryStatus}
+        categoryError={categoryError}
+      />
+    </div>
+  );
+};
+
+Items.propTypes = {
+  categories: PropTypes.array.isRequired,
+  categoryStatus: PropTypes.string.isRequired,
+  categoryError: PropTypes.any.isRequired,
 };
 
 export default Categories;

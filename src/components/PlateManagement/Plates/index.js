@@ -1,16 +1,13 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { times } from 'lodash';
-import { Card } from '../../../lib';
 import Filter from './Filter';
 import PlateCard from './PlateCard';
 import Categories from './Categories';
+// import PopularPlates from './PopularPlates';
+import NewPlates from './NewPlates';
 
-const LoaderCard = () => (
-  <Card>
-    <div className="animate-pulse bg-gray-200 h-60 rounded" />
-  </Card>
-);
+const LoaderCard = () => <div className="animate-pulse bg-gray-200 h-60 rounded" />;
 
 const Plates = () => {
   const { plates, status, error } = useSelector((state) => state.plateData);
@@ -18,25 +15,21 @@ const Plates = () => {
 
   return (
     <div>
-      <Categories />
-      <div className="pb-8">
-        <h1 className="text-3xl font-bold py-5">New on Cheffy</h1>
-        <div className="grid grid-cols-3 gap-8">
-          <PlateCard>1</PlateCard>
-          <PlateCard>1</PlateCard>
-          <PlateCard>1</PlateCard>
-        </div>
-      </div>
+      <div className="hidden sm:block md:block lg:block xl:block">
+        <Categories />
+        <NewPlates />
 
-      <div className="pb-10">
-        <h1 className="text-3xl font-bold py-5">Popular Near You</h1>
-        <div className="grid grid-cols-3 gap-8">
-          <PlateCard>1</PlateCard>
-          <PlateCard>1</PlateCard>
-          <PlateCard>1</PlateCard>
+        <div className="pb-10">
+          <h1 className="text-3xl font-bold py-5">Popular Near You</h1>
+          <div className="grid grid-cols-3 gap-8">
+            <PlateCard>1</PlateCard>
+            <PlateCard>1</PlateCard>
+            <PlateCard>1</PlateCard>
+          </div>
         </div>
-      </div>
 
+        {/* <PopularPlates/> */}
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-0 lg:grid-cols-4 gap-0 md:gap-4 sm:gap-4 lg:gap-4 xl:gap-4">
         <div className="hidden sm:hidden md:block lg:block xl:block sticky top-0">
           <Filter />

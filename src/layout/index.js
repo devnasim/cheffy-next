@@ -1,15 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import Header from './Header';
 
-const Layout = ({ children, hasBanner }) => {
+const Layout = ({ children }) => {
   return (
     <>
       <Header />
-      <div className={`${hasBanner ? '' : 'container'} mx-6 sm:mx-6 md:mx-6 lg:mx-auto xl:mx-auto`}>
-        {children}
-      </div>
+      {children}
     </>
   );
 };

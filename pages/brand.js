@@ -1,14 +1,15 @@
 import React from 'react';
 
 import Layout from '../src/layout';
+import { Pager } from '../src/lib';
 import BrandGuideLines from '../src/components/BrandGuideLines';
 
 function FoodsPage() {
   return (
     <Layout>
-      <div className="py-6">
+      <Pager>
         <BrandGuideLines />
-      </div>
+      </Pager>
     </Layout>
   );
 }

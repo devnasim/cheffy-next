@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { first, snakeCase } from 'lodash';
+import { first, snakeCase, capitalize } from 'lodash';
 import Link from 'next/link';
 import { AiFillStar } from 'react-icons/ai';
 import { BiTimeFive } from 'react-icons/bi';
@@ -23,7 +23,7 @@ const PlateCard = ({ plate }) => {
       </Link>
       <Link href={`/plate/${snakeCase(plate.name)}`}>
         <div className="pt-2 cursor-pointer	">
-          <h2 className="text-lg font-medium">{plate.name}</h2>
+          <h2 className="text-lg font-medium capitalize">{capitalize(plate.name)}</h2>
         </div>
       </Link>
       <div className="flex flex-row justify-between content-center py-2">

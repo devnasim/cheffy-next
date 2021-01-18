@@ -2,6 +2,7 @@ import React, { useCallback, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import Layout from '../src/layout';
+import { Pager } from '../src/lib';
 import { platesAction } from '../src/store/plateSlice';
 import { Plates } from '../src/components/PlateManagement';
 
@@ -19,9 +20,9 @@ function PlatesPage() {
 
   return (
     <Layout>
-      <div className="py-6">
+      <Pager isTopPadded>
         <Plates />
-      </div>
+      </Pager>
     </Layout>
   );
 }
