@@ -3,6 +3,8 @@ import { Pager } from '../../../lib';
 import Banner from './Banner';
 import ChefProfile from './ChefProfile';
 import FoodInfo from './FoodInfo';
+import PlateDetail from './PlateDetail';
+import Reviews from './Reviews';
 
 const Food = () => {
   return (
@@ -12,8 +14,8 @@ const Food = () => {
         <ChefProfile />
         <div className="mt-36">
           <FoodInfo />
-          <h2 className="text-2xl font-semibold pb-1">Details</h2>
-          <h2 className="text-2xl font-semibold pb-1">Review</h2>
+          <PlateDetail />
+          <Reviews />
         </div>
       </Pager>
     </div>
