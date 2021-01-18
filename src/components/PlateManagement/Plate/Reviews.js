@@ -7,6 +7,8 @@ const Reviews = () => {
       <h2 className="text-2xl font-semibold pb-1">Reviews</h2>
       <Review />
       <Review />
+      <Review />
+      <Review />
     </>
   );
 };

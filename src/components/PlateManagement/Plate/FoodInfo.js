@@ -4,7 +4,7 @@ import { Button } from '../../../lib';
 
 const FoodInfo = () => {
   return (
-    <div className="">
+    <div className="mb-3">
       <h2 className="text-3xl font-medium pb-1">Dickey BBQ Pick</h2>
       <h3 className="text-xl font-semibold text-pink-500 pb-1">$96.00</h3>
       <div>
