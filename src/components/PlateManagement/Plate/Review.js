@@ -6,7 +6,7 @@ const random = 'https://source.unsplash.com/random';
 
 const Review = () => {
   return (
-    <div className="p-6 w-1/3 bg-white flex items-start space-x-4">
+    <div className="p-6 md:w-1/3 bg-white flex items-start space-x-4">
       <div className="flex-shrink-0">
         <img className="h-12 w-12 rounded-full" src={random} alt="ChitChat Logo" />
       </div>
