@@ -1,21 +1,14 @@
 import React from 'react';
+import Layout from '../../src/layout';
+import { Pager } from '../../src/lib';
 
 function DriverPage() {
   return (
-    <div className="h-96">
-      <div className="h-3/5">
-        <h1 className="text-3xl text-primary pt-20 text-center uppercase">
-          Welcome to DriverPage Layout
-        </h1>
-        {/* <div>
-      <pre>{JSON.stringify(nookies, null, 2)}</pre>
-      <button onClick={() => setNookie("foo", "123")}>
-        Set
-      </button>
-      <button onClick={() => removeNookie("foo")}>Clear</button>
-    </div> */}
-      </div>
-    </div>
+    <Layout>
+      <Pager isTopPadded>
+        <h1 className="text-4xl">Driver Dashboard</h1>
+      </Pager>
+    </Layout>
   );
 }
 

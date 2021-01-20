@@ -10,10 +10,7 @@ function LoginPage() {
 
   const { status, error } = useSelector((state) => state.auth);
   const onSubmit = async (values) => {
-    await dispatch(
-      // loginAction({ login: 'test_user2@gmail.com'.trim(), password: '123456' }),
-      loginAction({ login: values.email.trim(), password: values.password }),
-    );
+    await dispatch(loginAction({ login: values.email.trim(), password: values.password }));
   };
 
   return <LoginForm loading={status === 'loading'} error={error} onSubmit={onSubmit} />;

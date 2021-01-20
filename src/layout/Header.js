@@ -1,8 +1,13 @@
+import { useRouter } from 'next/router';
 import React from 'react';
 import { HiLocationMarker } from 'react-icons/hi';
+import { useSelector } from 'react-redux';
 import { Button, Pager } from '../lib';
 
 const Header = () => {
+  const { isLoggedIn } = useSelector((state) => state.auth);
+  const router = useRouter();
+
   return (
     <header className="sticky top-0 bg-white shadow-sm z-30">
       <Pager>
@@ -28,14 +33,29 @@ const Header = () => {
                 </button>
               </div>
               <div>
-                <div className="flex-auto flex justify-between">
-                  <div className="pr-3">
-                    <Button name="Login" />
+                {!isLoggedIn ? (
+                  <div className="flex-auto flex justify-between">
+                    <div className="pr-3">
+                      <Button name="Login" onClick={() => router.push('/login')} />
+                    </div>
+                    <div className="pl-3 hidden sm:block md:block lg:block xl:block">
+                      <Button secondary name="Signup" />
+                    </div>
                   </div>
-                  <div className="pl-3 hidden sm:block md:block lg:block xl:block">
-                    <Button secondary name="Signup" />
+                ) : (
+                  <div className="flex-auto flex justify-between">
+                    <div className="pr-3">
+                      <Button
+                        name="Logout"
+                        onClick={() => {
+                          document.cookie = `user_type=${null}`;
+                          document.cookie = `token=${null}`;
+                          router.push('/login');
+                        }}
+                      />
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
             </div>
           </div>

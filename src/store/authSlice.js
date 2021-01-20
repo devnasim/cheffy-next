@@ -1,5 +1,8 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+// import { Router } from 'next/router';
+import Router from 'next/router';
+
 import client from '../apis/client';
 
 const initialState = {
@@ -24,17 +27,29 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    // frontend custom function here
+    authSetOnReload(state, action) {
+      console.log('authSetOnReload', action.payload);
+      state.userRole = action.payload.userType;
+      state.isLoggedIn = true;
+    },
   },
   extraReducers: {
     [loginAction.pending]: (state) => {
       state.status = 'loading';
     },
     [loginAction.fulfilled]: (state, action) => {
-      state.status = 'succeeded';
-      state.user = action.payload.data.userResponse;
-      state.userRole = action.payload.data.userResponse.user_type;
-      state.isLoggedIn = true;
+      if (action.payload && action.payload) {
+        state.status = 'succeeded';
+        state.user = action.payload.data.userResponse;
+        state.userRole = action.payload.data.userResponse.user_type;
+        state.isLoggedIn = true;
+        document.cookie = `user_type=${action.payload.data.userResponse.user_type}`;
+        document.cookie = `token=${action.payload.token}`;
+        Router.push('/');
+      } else {
+        state.status = 'failed';
+        state.error = { message: 'Please enter valid email and password' };
+      }
     },
     [loginAction.rejected]: (state, action) => {
       state.status = 'failed';
@@ -52,5 +67,7 @@ const authSlice = createSlice({
     },
   },
 });
+
+export const { authSetOnReload } = authSlice.actions;
 
 export default authSlice.reducer;

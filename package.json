@@ -17,6 +17,7 @@
     "lodash": "^4.17.20",
     "moment-timezone": "^0.5.32",
     "next": "^10.0.4",
+    "next-cookies": "^2.0.3",
     "next-redux-wrapper": "^6.0.2",
     "next-seo": "^4.17.0",
     "postcss": "^8.2.4",
