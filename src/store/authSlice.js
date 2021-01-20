@@ -39,13 +39,14 @@ const authSlice = createSlice({
     },
     [loginAction.fulfilled]: (state, action) => {
       if (action.payload && action.payload) {
+        const userRole = action.payload.data.userResponse.user_type;
         state.status = 'succeeded';
         state.user = action.payload.data.userResponse;
-        state.userRole = action.payload.data.userResponse.user_type;
+        state.userRole = userRole;
         state.isLoggedIn = true;
         document.cookie = `user_type=${action.payload.data.userResponse.user_type}`;
         document.cookie = `token=${action.payload.token}`;
-        Router.push('/');
+        Router.push(userRole === 'user' ? '/plates' : userRole);
       } else {
         state.status = 'failed';
         state.error = { message: 'Please enter valid email and password' };

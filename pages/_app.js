@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 import cookies from 'next-cookies';
 import { DefaultSeo } from 'next-seo';
-import { Provider } from 'react-redux';
+import { Provider, useDispatch } from 'react-redux';
 import withRedux from 'next-redux-wrapper';
 import store from '../src/store';
 import 'tailwindcss/tailwind.css';
@@ -18,7 +18,13 @@ import {
 import { authSetOnReload } from '../src/store/authSlice';
 
 function App(props) {
-  const { Component, pageProps } = props;
+  const { Component, pageProps, userType } = props;
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (userType) {
+      dispatch(authSetOnReload({ userType }));
+    }
+  }, [userType, dispatch]);
 
   return (
     <>
@@ -41,11 +47,6 @@ function App(props) {
 
 App.getInitialProps = async ({ Component, ctx }) => {
   const { user_type: userType } = cookies(ctx);
-  const { dispatch } = ctx.store;
-  if (userType) {
-    dispatch(authSetOnReload({ userType }));
-  }
-
   if (ctx.res && userType === 'user') {
     const filter = userRoutes.filter((item) => item === ctx.pathname);
     if (filter.length === 0) {
@@ -53,37 +54,37 @@ App.getInitialProps = async ({ Component, ctx }) => {
       ctx.res.end();
     } else {
       const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
-      return { pageProps };
+      return { pageProps, userType };
     }
   }
   if (ctx.res && userType === 'chef') {
     const filter = chefRoutes.filter((item) => item === ctx.pathname);
     if (filter.length === 0) {
-      ctx.res.writeHead(302, { Location: '/' });
+      ctx.res.writeHead(302, { Location: '/chef' });
       ctx.res.end();
     } else {
       const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
-      return { pageProps };
+      return { pageProps, userType };
     }
   }
   if (ctx.res && userType === 'driver') {
     const filter = driverRoutes.filter((item) => item === ctx.pathname);
     if (filter.length === 0) {
-      ctx.res.writeHead(302, { Location: '/' });
+      ctx.res.writeHead(302, { Location: '/driver' });
       ctx.res.end();
     } else {
       const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
-      return { pageProps };
+      return { pageProps, userType };
     }
   }
   if (ctx.res && userType === 'kitchen') {
     const filter = kitchenRoutes.filter((item) => item === ctx.pathname);
     if (filter.length === 0) {
-      ctx.res.writeHead(302, { Location: '/' });
+      ctx.res.writeHead(302, { Location: '/kitchen' });
       ctx.res.end();
     } else {
       const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
-      return { pageProps };
+      return { pageProps, userType };
     }
   }
   if (ctx.res && !userType) {
@@ -93,7 +94,7 @@ App.getInitialProps = async ({ Component, ctx }) => {
       ctx.res.end();
     } else {
       const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
-      return { pageProps };
+      return { pageProps, userType };
     }
   }
   const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
@@ -107,4 +108,6 @@ export default withRedux(makeStore)(App);
 App.propTypes = {
   Component: PropTypes.elementType.isRequired,
   pageProps: PropTypes.object.isRequired,
+  // eslint-disable-next-line react/require-default-props
+  userType: PropTypes.string,
 };
