@@ -14,8 +14,13 @@ const Food = () => {
         <ChefProfile />
         <div className="mt-36">
           <FoodInfo />
-          <PlateDetail />
-          <Reviews />
+          <div className="md:flex flex-row">
+            <div className="w-full">
+              <PlateDetail />
+              <Reviews />
+            </div>
+            <div className="w-4/12" />
+          </div>
         </div>
       </Pager>
     </div>
