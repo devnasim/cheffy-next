@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { MdEuroSymbol } from 'react-icons/md';
-import { Radio, Checkbox, ButtonCheckBox } from '../../../lib';
+import { Radio, ButtonCheckBox } from '../../../lib';
 
 const sortOptions = [
   { key: 'pickup', label: 'Picked for you (default)' },
@@ -19,7 +19,6 @@ const priceRangeOptions = [
 
 const Filter = () => {
   const [sort, setSort] = useState('pickup');
-  const [hello, setHello] = useState(true);
   const [buttonChecked, setButtonChecked] = useState(false);
   const [priceRange, setPriceRange] = useState(null);
 

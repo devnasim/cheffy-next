@@ -4,6 +4,9 @@ import queryString from 'query-string';
 import client from '../apis/client';
 
 const initialState = {
+  plate: null,
+  plateStatus: 'idle',
+  plateError: null,
   popularPlates: [],
   popularStatus: 'idle',
   popularError: null,
@@ -18,6 +21,10 @@ const initialState = {
   error: null,
 };
 // auth/login : is a action type
+export const plateAction = createAsyncThunk('/plate', async () => {
+  const response = await client.get('/plate/show/1');
+  return response;
+});
 export const platesAction = createAsyncThunk('/plates', async () => {
   const response = await client.get('/plate');
   return response;
@@ -47,6 +54,17 @@ const plateSlice = createSlice({
     // frontend custom function here
   },
   extraReducers: {
+    [plateAction.pending]: (state) => {
+      state.plateStatus = 'loading';
+    },
+    [plateAction.fulfilled]: (state, action) => {
+      state.plateStatus = 'succeeded';
+      state.plate = action.payload.data;
+    },
+    [plateAction.rejected]: (state, action) => {
+      state.plateStatus = 'failed';
+      state.plateError = action.payload;
+    },
     [platesAction.pending]: (state) => {
       state.status = 'loading';
     },

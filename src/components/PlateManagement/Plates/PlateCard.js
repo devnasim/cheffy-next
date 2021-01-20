@@ -61,6 +61,7 @@ PlateCard.defaultProps = {
     ],
   },
 };
+
 PlateCard.propTypes = {
   plate: PropTypes.object,
 };

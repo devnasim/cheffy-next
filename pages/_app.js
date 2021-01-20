@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
+import { DefaultSeo } from 'next-seo';
 import { Provider } from 'react-redux';
 import withRedux from 'next-redux-wrapper';
 import store from '../src/store';
 import 'tailwindcss/tailwind.css';
+import SEO from '../next-seo.config';
 
 function App(props) {
   const { Component, pageProps } = props;
@@ -22,6 +24,7 @@ function App(props) {
       </Head>
       <Provider store={store}>
         <Component {...pageProps} />
+        <DefaultSeo {...SEO} />
       </Provider>
     </>
   );

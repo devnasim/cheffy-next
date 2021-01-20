@@ -13,11 +13,8 @@ const Layout = ({ children }) => {
 
 export default Layout;
 
-Layout.defaultProps = {
-  hasBanner: false,
-};
+Layout.defaultProps = {};
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-  hasBanner: PropTypes.bool,
 };
