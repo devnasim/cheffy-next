@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { AiFillStar } from 'react-icons/ai';
 
 const StarRating = ({ size }) => {
@@ -21,6 +22,14 @@ const StarRating = ({ size }) => {
       </span>
     </div>
   );
+};
+
+StarRating.defaultProps = {
+  size: 0,
+};
+
+StarRating.propTypes = {
+  size: PropTypes.number,
 };
 
 export default StarRating;

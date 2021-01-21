@@ -1,5 +1,7 @@
 import React from 'react';
 import { AiFillEdit } from 'react-icons/ai';
+import PropTypes from 'prop-types';
+
 import Modal from '../../../lib/Modal';
 import RatingInput from '../../../lib/RatingInput';
 
@@ -40,6 +42,15 @@ const ReviewModal = ({ isActive, onCloseModal }) => {
       </div>
     </Modal>
   );
+};
+
+ReviewModal.defaultProps = {
+  onCloseModal: () => {},
+};
+
+ReviewModal.propTypes = {
+  isActive: PropTypes.bool.isRequired,
+  onCloseModal: PropTypes.func,
 };
 
 export default ReviewModal;
