@@ -1,7 +1,7 @@
 import React from 'react';
 import { AiFillEdit } from 'react-icons/ai';
 import Modal from '../../../lib/Modal';
-import StarRating from './StarRating';
+import RatingInput from '../../../lib/RatingInput';
 
 const ReviewModal = ({ isActive, onCloseModal }) => {
   return (
@@ -19,7 +19,7 @@ const ReviewModal = ({ isActive, onCloseModal }) => {
               <p className="text-sm text-gray-500">Tap to rate your experience</p>
             </div>
             <div className="pb-3">
-              <StarRating size={45} />
+              <RatingInput size={45} />
             </div>
           </div>
         </div>

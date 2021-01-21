@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-import { AiFillEdit } from 'react-icons/ai';
-import StarRating from '../components/PlateManagement/Plate/StarRating';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const Modal = ({ isActive = false, onCloseModal = () => {}, children }) => {
   return (
@@ -36,6 +35,16 @@ const Modal = ({ isActive = false, onCloseModal = () => {}, children }) => {
       </div>
     )
   );
+};
+
+Modal.defaultProps = {
+  onCloseModal: () => {},
+};
+
+Modal.propTypes = {
+  isActive: PropTypes.bool.isRequired,
+  onCloseModal: PropTypes.func,
+  children: PropTypes.node.isRequired,
 };
 
 export default Modal;

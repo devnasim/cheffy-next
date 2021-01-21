@@ -12,7 +12,7 @@ const Food = () => {
       <Banner />
       <Pager>
         <ChefProfile />
-        <div className="mt-36">
+        <div className="mt-32 md:mt-48">
           <FoodInfo />
           <div className="md:flex flex-row">
             <div className="w-full">
